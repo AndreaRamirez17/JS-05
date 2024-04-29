@@ -33,12 +33,13 @@ else{
 }while (shouldRetry);
 
 //-------------------------------------------------------------------
-/**
-// * Alarma
- * Escribe un programa que pregunte a un usuario la cantidad de segundos necesarios hasta que se ejecute una alarma (mensaje) junto con un texto para mostrar una vez que hayan pasado esos segundos en tiempo real.
- * Ejemplo de resultado : "Hora de acostarse después de 10 segundos".
- */
+// Alarma
 
+let segundos=2;//prompt("ingrese la cantidad de segundos necesarios hasta que se ejecute una alarma ");
+let miliseg=segundos*1000;
+setTimeout(() => {
+    console.log("Hora de acostarse despues de "+ segundos+ " segundos" );
+  }, miliseg);
 
 //-------------------------------------------------------------------
 //Palíndromo
@@ -83,8 +84,22 @@ console.log(factorial(m));
 
 
 //-------------------------------------------------------------------
-/**
- * Matriz Plana
- * Escriba un programa que tome la siguiente matriz anidada y la aplane (convirtiéndola en una matriz 1D). Utilice cualquier tipo de algoritmo que desee, como devoluciones de llamada, recursividad, etc.
- */
-//let multiDimensión = [1, [2, 3, [4, 5, [6]]]];
+// Matriz Plana
+
+let multiDimensión = [1, [2, 3, [4, 5]]];
+let arreglo2=[];
+let arreglo=multiDimensión.forEach((e)=>{arreglo2.push(String(e))})
+var arrFinal = arreglo2.map(function(elemento) {
+    // map es para transformar cada elemento del array según la función proporcionada, lo usaba mucho en python jaja
+    if (elemento.includes(',')) {
+        return elemento.split(',').map(function(numero) { 
+            // con includes(',') verificamos si los elementos contienen una coma  
+            // usamos map() nuevamente en el array resultante para convertir cada subcadena en un número utilizando parseInt()
+            return parseInt(numero);
+        });
+    }
+    return parseInt(elemento);
+    // Si el elemento no contiene una coma, simplemente lo convertimos directamente en un número 
+}).flat(); // flat() es para aplanar el array de arrays en un único array
+console.log(arrFinal);
+
